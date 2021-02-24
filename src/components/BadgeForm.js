@@ -1,10 +1,13 @@
 import "./styles/BadgeForm.css";
+import { useState } from "react";
 
 const BadgeForm = () => {
+  const [value, setValue] = useState({ jobTitle: "designers" });
+
   function handleChange(e) {
-    console.log({
-      name: e.target.name,
-      value: e.target.value,
+    setValue({
+      ...value,
+      [e.target.name]: e.target.value,
     });
   }
 
@@ -14,7 +17,9 @@ const BadgeForm = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
+    console.log(value);
   }
+
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit}>
@@ -25,6 +30,37 @@ const BadgeForm = () => {
             className="form-control"
             type="text"
             name="firstName"
+            value={value.firstName}
+          />
+        </div>
+        <div className="form-group">
+          <label>Apellido</label>
+          <input
+            onChange={handleChange}
+            className="form-control"
+            type="text"
+            name="lastName"
+            value={value.lastName}
+          />
+        </div>
+        <div className="form-group">
+          <label>Trabajo</label>
+          <input
+            onChange={handleChange}
+            className="form-control"
+            type="text"
+            name="jobTitle"
+            value={value.jobTitle}
+          />
+        </div>
+        <div className="form-group">
+          <label>Twitter</label>
+          <input
+            onChange={handleChange}
+            className="form-control"
+            type="text"
+            name="twitter"
+            value={value.twitter}
           />
         </div>
         <button onClick={handleClick} className="btn btn-primary">
