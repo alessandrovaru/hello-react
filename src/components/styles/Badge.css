@@ -14,7 +14,7 @@
 
 .badge-header {
   background-color: red;
-  height: 200px;
+  height: auto;
   overflow: hidden;
 }
 
