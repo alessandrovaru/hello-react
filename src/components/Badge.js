@@ -1,6 +1,7 @@
 import confLogo from "../images/header.jpg";
 import "./styles/Badge.css";
-const Badge = () => {
+
+const Badge = ({ firstname, lastname, jobTitle, twitter }) => {
   return (
     <div className="badge-container">
       <div className="badge-header">
@@ -10,17 +11,19 @@ const Badge = () => {
           alt="logo"
         />
       </div>
-      <div>
-        <h1>
-          Alessandro <br /> Varuzza
-        </h1>
-      </div>
-      <div>
-        <p>Frontend developer</p>
-        <a href="">@alessandrovaru</a>
-      </div>
-      <div>
-        <p>#ReactBadges</p>
+      <div className="badge-body">
+        <div className="badge-name-container">
+          <h1>
+            {firstname} <br /> {lastname}
+          </h1>
+        </div>
+        <div className="badge-info-container">
+          <p>{jobTitle}</p>
+          <a href="https://github.com/alessandrovaru">{twitter}</a>
+        </div>
+        <div className="badge-footer">
+          <p>#ReactBadges</p>
+        </div>
       </div>
     </div>
   );

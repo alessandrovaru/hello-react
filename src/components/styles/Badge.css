@@ -1,6 +1,6 @@
 .badge-container {
   background-color: rgb(255, 255, 255);
-  margin: 20px;
+  margin-top: 20px;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 0 8px black;
@@ -20,4 +20,8 @@
 
 .badge-header-fondo {
   width: auto;
+}
+
+.badge-body {
+  padding: 20px;
 }
