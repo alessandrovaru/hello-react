@@ -1,9 +1,7 @@
-import Navbar from "../components/Navbar";
 import headerBack from "../images/header.jpg";
 import BadgesList from "../components/BadgesList";
 
 import { useState } from "react";
-import Footer from "../components/Footer";
 import { Link } from "react-router-dom";
 
 const Badges = () => {
@@ -41,7 +39,6 @@ const Badges = () => {
   ]);
   return (
     <>
-      <Navbar />
       <div className="hero-container">
         <img src={headerBack} className="img-fluid" alt="header" />
       </div>
@@ -55,8 +52,6 @@ const Badges = () => {
           <BadgesList badgeData={data} />
         </div>
       </div>
-
-      <Footer />
     </>
   );
 };

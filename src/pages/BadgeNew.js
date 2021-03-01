@@ -1,9 +1,7 @@
-import Navbar from "../components/Navbar";
 import Badge from "../components/Badge";
 import BadgeForm from "../components/BadgeForm";
 import headerBack from "../images/header.jpg";
 import { useState } from "react";
-import Footer from "../components/Footer";
 
 const BadgeNew = () => {
   const [form, setForm] = useState({
@@ -20,7 +18,6 @@ const BadgeNew = () => {
   }
   return (
     <>
-      <Navbar />
       <div className="hero-container">
         <img src={headerBack} className="img-fluid" alt="header" />
       </div>
@@ -39,7 +36,6 @@ const BadgeNew = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };
