@@ -9,39 +9,42 @@ import api from "../api";
 const Badges = () => {
   const [data, setData] = useState([]);
 
-  const [loading, setLoading] = useState({
-    loading: true,
-  });
+  const [loading, setLoading] = useState(false);
 
-  const [error, setError] = useState({
-    error: null,
-  });
+  const [errores, setError] = useState(false);
+
+  const fetchData = async () => {
+    console.log("kk");
+
+    setLoading(true);
+    setError(false);
+
+    try {
+      const response = await api.badges.list();
+
+      setLoading({ loading: false });
+      console.log(loading);
+      console.log(response);
+      setData(response);
+    } catch (error) {
+      setLoading(false);
+      setError(true);
+      console.log(errores);
+
+      console.log(errores);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      console.log("kk");
-
-      setLoading({ loading: true });
-      setError({ error: null });
-
-      try {
-        const response = await api.badges.list();
-
-        setLoading({ loading: false });
-        console.log(loading);
-        console.log();
-        console.log(response);
-        setData(response);
-      } catch (error) {
-        setLoading({ loading: false });
-        setError({ error: error });
-      }
-    };
     fetchData();
   }, []);
 
   if (loading === true) {
     return "Loading...";
+  }
+
+  if (errores) {
+    return "Hubo un error";
   }
 
   return (
