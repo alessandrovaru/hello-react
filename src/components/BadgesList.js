@@ -1,4 +1,11 @@
 const BadgesList = ({ badgeData }) => {
+  if (badgeData.length === 0) {
+    return (
+      <>
+        <h3>No hay ningún artículo</h3>
+      </>
+    );
+  }
   return (
     <>
       <ul>
