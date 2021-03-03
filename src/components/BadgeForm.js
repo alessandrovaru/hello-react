@@ -1,18 +1,18 @@
 import "./styles/BadgeForm.css";
 
-const BadgeForm = ({ onChange, formValues }) => {
+const BadgeForm = ({ onChange, formValues, onSubmit }) => {
   function handleClick(e) {
     console.log("Button was clicked");
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(formValues);
-  }
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   console.log(formValues);
+  // }
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <div className="form-group">
           <label>Nombre</label>
           <input

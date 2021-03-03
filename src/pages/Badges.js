@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import api from "../api";
+import PageLoading from "../components/PageLoading";
+import PageError from "../components/PageError";
 
 const Badges = () => {
   const [data, setData] = useState([]);
@@ -14,8 +16,6 @@ const Badges = () => {
   const [errores, setError] = useState(false);
 
   const fetchData = async () => {
-    console.log("kk");
-
     setLoading(true);
     setError(false);
 
@@ -28,10 +28,7 @@ const Badges = () => {
       setData(response);
     } catch (error) {
       setLoading(false);
-      setError(true);
-      console.log(errores);
-
-      console.log(errores);
+      setError(error);
     }
   };
 
@@ -40,11 +37,11 @@ const Badges = () => {
   }, []);
 
   if (loading === true) {
-    return "Loading...";
+    return <PageLoading />;
   }
 
   if (errores) {
-    return "Hubo un error";
+    return <PageError error={errores.message} />;
   }
 
   return (
