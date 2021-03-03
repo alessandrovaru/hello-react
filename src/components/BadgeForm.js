@@ -1,6 +1,6 @@
 import "./styles/BadgeForm.css";
 
-const BadgeForm = ({ onChange, formValues, onSubmit }) => {
+const BadgeForm = ({ onChange, formValues, onSubmit, error }) => {
   function handleClick(e) {
     console.log("Button was clicked");
   }
@@ -57,6 +57,7 @@ const BadgeForm = ({ onChange, formValues, onSubmit }) => {
           Save
         </button>
       </form>
+      {error && <p>{error}</p>}
     </div>
   );
 };

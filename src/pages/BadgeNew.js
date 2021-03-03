@@ -3,8 +3,12 @@ import BadgeForm from "../components/BadgeForm";
 import headerBack from "../images/header.jpg";
 import { useState } from "react";
 import api from "../api";
+import PageLoading from "../components/PageLoading";
+import PageError from "../components/PageError";
+import { useHistory } from "react-router-dom";
 
 const BadgeNew = () => {
+  let history = useHistory();
   const [form, setForm] = useState({
     firstName: "",
     jobTitle: "",
@@ -16,6 +20,23 @@ const BadgeNew = () => {
 
   const [errores, setError] = useState(false);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(false);
+
+    try {
+      const response = await api.badges.create(form);
+      await setLoading({ loading: false });
+
+      history.push("/badges");
+    } catch (error) {
+      setLoading(false);
+      setError(error);
+      console.log(error.message);
+    }
+  };
+
   function handleChange(e) {
     setForm({
       ...form,
@@ -23,18 +44,9 @@ const BadgeNew = () => {
     });
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading({ loading: true });
-    setError(false);
-    try {
-      await api.badges.create(form);
-      setLoading({ loading: false });
-    } catch (error) {
-      setLoading(false);
-      setError(error);
-    }
-  };
+  if (loading === true) {
+    return <PageLoading />;
+  }
 
   return (
     <>
@@ -56,6 +68,7 @@ const BadgeNew = () => {
               onChange={handleChange}
               onSubmit={handleSubmit}
               formValues={form}
+              error={errores.message}
             />
           </div>
         </div>

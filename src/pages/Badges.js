@@ -29,6 +29,7 @@ const Badges = () => {
     } catch (error) {
       setLoading(false);
       setError(error);
+      console.log(error);
     }
   };
 
